@@ -8,7 +8,7 @@ A simple configurable container to generate an Apache docker container with [Apa
 
 Run the following:
 
-```
+```bash
 docker run -d -it \
  --name apaxy \
  -v /your/file/share/directory:/data \
@@ -22,7 +22,7 @@ Add files to `/your/file/share/directory/webroot` on your Docker host to see the
 
 To override the default header, footer, and css provided out-of-the-box with Apaxy:
 
-```
+```bash
 docker run -d -it \
  --name apaxy \
  -v /your/file/share/directory:/data \
@@ -37,7 +37,7 @@ docker run -d -it \
 
 The container exposes a data volume at `/data`. The following directories are added by default once the container starts up if they don't already exist:
 
-```
+```bash
 # The document root for the Apache server. If the 
 # APAXY_CONTEXT_PATH option is specified, the path
 # will be generated as a subdirectory to this webroot
