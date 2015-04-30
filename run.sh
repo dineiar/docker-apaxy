@@ -42,7 +42,8 @@ eval "echo \"`cat "/apaxy.tpl"`\"" > \
 # Determine whether or not the Apaxy installation has been
 # completed yet
 #
-if [[ ! -e "${APAXY_THEME_PATH}" ]]; then
+if [[ ! -e "${APAXY_THEME_PATH}/icons" 
+      || ! $(ls -A "${APAXY_THEME_PATH}/icons") ]]; then
   
   #
   # Copy the Apaxy "theme" folder contents to the theme 
