@@ -9,7 +9,7 @@ A simple configurable container to generate an Apache docker container with [Apa
 Run the following:
 
 ```bash
-docker run -d -it \
+docker run -d \
  --name apaxy \
  -v /your/file/share/directory:/data \
  -p 80:80 \
@@ -23,7 +23,7 @@ Add files to `/your/file/share/directory/webroot` on your Docker host to see the
 To override the default header, footer, and css provided out-of-the-box with Apaxy:
 
 ```bash
-docker run -d -it \
+docker run -d \
  --name apaxy \
  -v /your/file/share/directory:/data \
  -p 80:80 \

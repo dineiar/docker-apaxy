@@ -1,3 +1,8 @@
+#
+# Disable TRACE requests
+#
+TraceEnable off
+
 <VirtualHost *>
 	
 	DocumentRoot "${APACHE_SERVER_ROOT}"
@@ -10,9 +15,9 @@
 	# theme directory 
 	#
 	<Directory "${APAXY_THEME_PATH}">
-		Options FollowSymLinks
-	    AllowOverride None
-	    Require all granted
+        Options FollowSymLinks
+        AllowOverride None
+        Require all granted
 	</Directory>
 
 	#
