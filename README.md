@@ -1,6 +1,6 @@
 # docker-apaxy
 
-A simple configurable container to generate an Apache docker container with [Apaxy](http://adamwhitcroft.com/apaxy/). Thanks to Adam Whitcroft for creating, maintaining, and sharing the [Apaxy project](https://github.com/AdamWhitcroft/Apaxy).
+A simple configurable container to generate an Apache docker container with [Apaxy](http://adamwhitcroft.com/apaxy/). Thanks to Adam Whitcroft for creating, maintaining, and sharing the [Apaxy project](https://github.com/AdamWhitcroft/Apaxy). Special thanks as well to Xetus OSS for the creation of this Docker image source, to which my changes were rather minor.
 
 ## Examples
 
