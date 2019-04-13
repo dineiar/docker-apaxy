@@ -13,7 +13,7 @@ docker run -d \
  --name apaxy \
  -v /your/file/share/directory:/data \
  -p 80:80 \
- xetusoss/apaxy
+ starttoaster/apaxyalps
  ```
 
 Add files to `/your/file/share/directory/webroot` on your Docker host to see them populate in the Apaxy-style Apache file index running in the new container.
@@ -30,7 +30,7 @@ docker run -d \
  -e APAXY_HEADER=/data/header-override.html \
  -e APAXY_FOOTER=/data/footer-override.html \
  -e APAXY_CSS=/data/style-override.css \
- xetusoss/apaxy
+ starttoaster/apaxyalps
 ``` 
 
 ## Details
