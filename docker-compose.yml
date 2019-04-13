@@ -1,0 +1,15 @@
+version: '2'
+services:
+
+#Apaxy
+  apaxy:
+    container_name: apaxy
+    image: starttoaster/apaxyalps:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - data:/data
+
+volumes:
+  data:
