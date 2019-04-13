@@ -65,4 +65,5 @@ The following environment variable configurations are available:
 
 ## Credits
 
-Thanks agian to Adam Whitcroft for creating, maintaining, and sharing the [Apaxy project](https://github.com/AdamWhitcroft/Apaxy).
+Thanks again to Adam Whitcroft for creating, maintaining, and sharing the [Apaxy project](https://github.com/AdamWhitcroft/Apaxy).
+As well as [Xetus OSS](https://github.com/xetus-oss) for creating the base for this Docker repo.
