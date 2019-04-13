@@ -1,4 +1,4 @@
-FROM httpd:2.4
+FROM httpd:2.4-alpine
 
 RUN echo "Include conf/sites-enabled/*.conf" >> \
     /usr/local/apache2/conf/httpd.conf
@@ -6,8 +6,8 @@ RUN echo "Include conf/sites-enabled/*.conf" >> \
 #
 # Install git so we can clone the git repository
 #
-RUN apt-get update -q && \
-    apt-get install -y git
+RUN apk update && \
+    apk add --no-cache git
 
 #
 # Clone the Apaxy repo from the read-only URL
