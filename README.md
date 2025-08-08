@@ -6,23 +6,23 @@ A simple configurable container to generate an Apache docker container with [Apa
 
 ### Quick Start
 
-Run the following:
+If you want to serve `/your/file/share/directory` on your machine with Apaxy, just run the following:
 
-```bash
+```sh
 docker run -d \
  --name apaxy \
- -v /your/file/share/directory:/data \
+ -v /your/file/share/directory:/data/webroot \
  -p 80:80 \
- starttoaster/apaxyalps
+ dineiar/apaxy
  ```
 
-Add files to `/your/file/share/directory/webroot` on your Docker host to see them populate in the Apaxy-style Apache file index running in the new container.
+Any files in `/your/file/share/directory` will be shown in the Apaxy-style Apache file index running in the new container.
 
 ### Apaxy Configuration
 
 To override the default header, footer, and css provided out-of-the-box with Apaxy:
 
-```bash
+```sh
 docker run -d \
  --name apaxy \
  -v /your/file/share/directory:/data \
@@ -30,8 +30,8 @@ docker run -d \
  -e APAXY_HEADER=/data/header-override.html \
  -e APAXY_FOOTER=/data/footer-override.html \
  -e APAXY_CSS=/data/style-override.css \
- starttoaster/apaxyalps
-``` 
+ dineiar/apaxy
+```
 
 ## Details
 

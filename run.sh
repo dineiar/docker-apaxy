@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #
 # Expose the followign configurations:
@@ -17,6 +17,8 @@ export APAXY_THEME_ALIAS=/.apaxy_theme
 export FOLDERNAME="${APAXY_THEME_ALIAS}"
 export APAXY_LOG_FILE=/data/log/apaxy.log
 
+APAXY_CONFIGURED_PATH=/root/Apaxy/webroot
+
 mkdir -p "$(dirname ${APAXY_LOG_FILE})"
 
 #
@@ -31,26 +33,26 @@ mkdir -p /data/webroot/"${APAXY_CONTEXT_PATH}"
 #   2. Evaluate the virtualhost template and save the result in the 
 #   sites-enabled/apaxy.conf file 
 #
-sed -i.bak 's;/{FOLDERNAME}/theme;'"${APAXY_THEME_ALIAS}"';g' \
-    Apaxy/apaxy/htaccess.txt
-APAXY_CONFIGURATIONS="$(cat Apaxy/apaxy/htaccess.txt)"
+sed -i.bak 's;APAXY_TEMP_FOLDER/theme;'"${APAXY_THEME_ALIAS}"';g' \
+    $APAXY_CONFIGURED_PATH/.htaccess
+APAXY_CONFIGURATIONS="$(cat $APAXY_CONFIGURED_PATH/.htaccess)"
 mkdir -p /usr/local/apache2/conf/sites-enabled/
-eval "echo \"`cat "/apaxy.tpl"`\"" > \
+eval "echo \"`cat "/root/apaxy.tpl"`\"" > \
      /usr/local/apache2/conf/sites-enabled/apaxy.conf
 
 #
 # Determine whether or not the Apaxy installation has been
 # completed yet
 #
-if [[ ! -e "${APAXY_THEME_PATH}/icons" 
-      || ! $(ls -A "${APAXY_THEME_PATH}/icons") ]]; then
+if [ ! -e "${APAXY_THEME_PATH}/icons" ] \
+      || [ ! $(ls -A "${APAXY_THEME_PATH}/icons") ]; then
   
   #
   # Copy the Apaxy "theme" folder contents to the theme 
   # path folder
   #
   mkdir -p "${APAXY_THEME_PATH}"
-  cp -r Apaxy/apaxy/theme/* "${APAXY_THEME_PATH}"
+  cp -r $APAXY_CONFIGURED_PATH/theme/* "${APAXY_THEME_PATH}"
 
   #
   # Support configuring the Apaxy style:
@@ -59,17 +61,17 @@ if [[ ! -e "${APAXY_THEME_PATH}/icons"
   #   - APAXY_FOOTER - the path to the footer.html override
   #   - APAXY_CSS - the path to the style.css override
   #
-  if [[ -n "${APAXY_HEADER}" && -e "${APAXY_HEADER}" ]]; then
+  if [ -n "${APAXY_HEADER}" ] && [ -e "${APAXY_HEADER}" ]; then
     echo "Installing the Apaxy header supplied at ${APAXY_HEADER}"
     cp "${APAXY_HEADER}" "${APAXY_THEME_PATH}"/header.html
   fi
 
-  if [[ -n "${APAXY_FOOTER}" && -e "${APAXY_FOOTER}" ]]; then
+  if [ -n "${APAXY_FOOTER}" ] && [ -e "${APAXY_FOOTER}" ]; then
     echo "Installing the Apaxy footer supplied at ${APAXY_FOOTER}"
     cp "${APAXY_FOOTER}" "${APAXY_THEME_PATH}"/footer.html
   fi
 
-  if [[ -n "${APAXY_CSS}" && -e "${APAXY_CSS}" ]]; then
+  if [ -n "${APAXY_CSS}" ] && [ -e "${APAXY_CSS}" ]; then
     echo "Installing the Apaxy stylesheet supplied at ${APAXY_CSS}"
     cp "${APAXY_CSS}" "${APAXY_THEME_PATH}"/style.css
   fi
@@ -80,7 +82,7 @@ fi
 #
 # Start the apache server
 #
-echo "Starting the Aapche server, this may take several seconds..."
+echo "Starting the Apache server, this may take several seconds..."
 apachectl start
 
 #
